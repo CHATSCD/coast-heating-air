@@ -164,10 +164,16 @@ export function ChevronDownIcon({ className = "h-5 w-5" }) {
   );
 }
 
-export function LogoMark({ className = "h-8 w-8" }) {
+/**
+ * Brand mark: a water drop with a bolt.
+ * tone="onDark" (default) for the ocean-blue header, tone="onLight" for white
+ * sections such as the footer, where a white drop would disappear.
+ */
+export function LogoMark({ className = "h-8 w-8", tone = "onDark" }) {
+  const plateClass = tone === "onLight" ? "fill-ocean-700" : "fill-white/10";
   return (
     <svg viewBox="0 0 64 64" className={className} aria-hidden="true">
-      <rect width="64" height="64" rx="14" className="fill-white/10" />
+      <rect width="64" height="64" rx="14" className={plateClass} />
       <path
         d="M32 11c4.8 6.2 9 11 9 16.2a9 9 0 0 1-18 0C23 22 27.2 17.2 32 11Z"
         className="fill-white"
