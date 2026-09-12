@@ -1,3 +1,4 @@
+import GulfCoastMap from "@/components/GulfCoastMap";
 import OpenStatus from "@/components/OpenStatus";
 import RequestForm from "@/components/RequestForm";
 import {
@@ -23,6 +24,7 @@ import {
   TEL_HREF,
   business,
   faqs,
+  hero,
   pricing,
   rating,
   serviceArea,
@@ -106,7 +108,7 @@ export default function Home() {
                 Coast Heating &amp; Air
               </span>
               <span className="block text-[10px] font-semibold uppercase tracking-[0.14em] text-ocean-300">
-                Ocean Springs, MS
+                Mississippi Gulf Coast
               </span>
             </span>
           </a>
@@ -126,78 +128,138 @@ export default function Home() {
         <section className="relative isolate overflow-hidden bg-gradient-to-b from-ocean-800 via-ocean-900 to-ocean-950 text-white">
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute -left-24 -top-20 h-64 w-64 rounded-full bg-ocean-400/20 blur-3xl"
+            className="pointer-events-none absolute -left-28 -top-24 h-72 w-72 rounded-full bg-ocean-400/20 blur-3xl"
           />
           <div
             aria-hidden="true"
-            className="pointer-events-none absolute -right-20 top-28 h-56 w-56 rounded-full bg-ocean-300/10 blur-3xl"
+            className="pointer-events-none absolute -right-24 top-16 h-64 w-64 rounded-full bg-ocean-300/10 blur-3xl"
           />
 
-          <div className="relative mx-auto max-w-3xl px-4 pb-9 pt-6 text-center sm:pb-14 sm:pt-10">
-            <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-ocean-300">
-              {business.name}
-            </p>
+          <div className="relative mx-auto grid max-w-5xl items-center gap-8 px-4 pb-16 pt-6 sm:pt-9 lg:grid-cols-[minmax(0,1fr)_minmax(0,430px)] lg:gap-12 lg:pb-24 lg:pt-12 lg:text-left">
+            {/* Copy column */}
+            <div className="text-center lg:text-left">
+              <p className="text-[11px] font-bold uppercase tracking-[0.18em] text-ocean-300">
+                {business.name}
+              </p>
 
-            <h1 className="mt-2.5 text-[26px] font-extrabold leading-[1.15] tracking-tight text-white xs:text-3xl sm:text-4xl lg:text-[42px]">
-              AC Out? Emergency AC Repair in Ocean Springs, MS — Same Day.
-            </h1>
+              <h1 className="mx-auto mt-2.5 max-w-2xl text-[26px] font-extrabold leading-[1.15] tracking-tight text-white xs:text-3xl sm:text-4xl lg:mx-0 lg:text-[42px]">
+                {hero.headline}
+              </h1>
 
-            <p className="mx-auto mt-3 max-w-xl text-[15px] leading-relaxed text-ocean-100 sm:text-base">
-              {business.valueProp} Serving the Gulf Coast for{" "}
-              {business.yearsInBusiness}.
-            </p>
+              <p className="mx-auto mt-3 max-w-xl text-[15px] leading-relaxed text-ocean-100 sm:text-base lg:mx-0">
+                {business.valueProp} Serving the Gulf Coast for{" "}
+                {business.yearsInBusiness}.
+              </p>
 
-            <div className="mt-4 flex flex-wrap items-center justify-center gap-2">
-              <OpenStatus />
-              <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1.5 text-[11px] font-semibold text-white ring-1 ring-inset ring-white/15 sm:text-xs">
-                <BoltIcon className="h-3.5 w-3.5 text-amber-300" />
-                Avg response {business.responseTime}
-              </span>
+              <p className="mx-auto mt-3 max-w-xl text-[12.5px] font-bold leading-relaxed text-ocean-200 lg:mx-0">
+                {hero.cities.join(" · ")}
+                <span className="block font-medium text-ocean-300">
+                  {hero.coverageLine}
+                </span>
+              </p>
+
+              <div className="mt-4 flex flex-wrap items-center justify-center gap-2 lg:justify-start">
+                <OpenStatus />
+                <span className="inline-flex items-center gap-1.5 rounded-full bg-white/10 px-3 py-1.5 text-[11px] font-semibold text-white ring-1 ring-inset ring-white/15 sm:text-xs">
+                  <BoltIcon className="h-3.5 w-3.5 text-amber-300" />
+                  Avg response {business.responseTime}
+                </span>
+              </div>
+
+              {/* Primary CTA — still above the fold on a 360x640 phone. */}
+              <a
+                href={TEL_HREF}
+                data-cta="hero-call"
+                className="mt-5 flex h-14 w-full items-center justify-center gap-2.5 rounded-2xl bg-white text-lg font-extrabold tracking-tight text-ocean-900 shadow-[0_18px_40px_-18px_rgba(0,0,0,0.7)] transition-transform active:scale-[0.99] active:bg-ocean-50 sm:mx-auto sm:max-w-md lg:mx-0"
+              >
+                <PhoneIcon className="h-5 w-5" />
+                Call Now: {PHONE_DISPLAY}
+              </a>
+              <p className="mt-2 text-[12px] font-medium text-ocean-200 sm:text-[13px]">
+                Tap to call — a real person answers, day or night. No phone tree.
+              </p>
+
+              <a
+                href="#request"
+                data-cta="hero-form-link"
+                className="mt-4 inline-flex items-center gap-1.5 text-[13px] font-semibold text-white underline decoration-ocean-400 decoration-2 underline-offset-4 sm:text-sm"
+              >
+                Prefer not to call? Request service in 20 seconds
+                <ArrowRightIcon className="h-4 w-4" />
+              </a>
+
+              <p className="mt-5 flex flex-wrap items-center justify-center gap-x-3 gap-y-1.5 text-[11px] font-semibold text-ocean-200 sm:text-xs lg:justify-start">
+                <span className="inline-flex items-center gap-1.5">
+                  <StarIcon className="h-3.5 w-3.5 text-amber-300" />
+                  {rating.value} stars · {rating.count} reviews
+                </span>
+                <span aria-hidden="true" className="text-ocean-500">
+                  •
+                </span>
+                <span>Licensed, Bonded &amp; Insured</span>
+                <span aria-hidden="true" className="text-ocean-500">
+                  •
+                </span>
+                <span>Nights, weekends &amp; holidays</span>
+              </p>
             </div>
 
-            {/* Primary CTA — visible without scrolling on a 360x640 phone. */}
-            <a
-              href={TEL_HREF}
-              data-cta="hero-call"
-              className="mt-5 flex h-14 w-full items-center justify-center gap-2.5 rounded-2xl bg-white text-lg font-extrabold tracking-tight text-ocean-900 shadow-[0_18px_40px_-18px_rgba(0,0,0,0.7)] transition-transform active:scale-[0.99] active:bg-ocean-50 sm:mx-auto sm:max-w-md"
-            >
-              <PhoneIcon className="h-5 w-5" />
-              Call Now: {PHONE_DISPLAY}
-            </a>
-            <p className="mt-2 text-[12px] font-medium text-ocean-200 sm:text-[13px]">
-              Tap to call — a real person answers, day or night. No phone tree.
-            </p>
+            {/* Graphic column — coverage map panel */}
+            <div className="relative">
+              <div
+                aria-hidden="true"
+                className="absolute -inset-6 rounded-[2.5rem] bg-ocean-400/20 blur-3xl"
+              />
+              <div className="relative overflow-hidden rounded-3xl border border-white/15 bg-ocean-900/60 shadow-[0_30px_80px_-40px_rgba(0,0,0,0.95)]">
+                <div className="relative aspect-[5/3]">
+                  <GulfCoastMap className="absolute inset-0 h-full w-full" />
 
-            <a
-              href="#request"
-              data-cta="hero-form-link"
-              className="mt-4 inline-flex items-center gap-1.5 text-[13px] font-semibold text-white underline decoration-ocean-400 decoration-2 underline-offset-4 sm:text-sm"
-            >
-              Prefer not to call? Request service in 20 seconds
-              <ArrowRightIcon className="h-4 w-4" />
-            </a>
+                  <div className="absolute left-3 top-3">
+                    <span className="inline-flex items-center gap-1.5 rounded-full bg-ocean-950/70 px-2.5 py-1 text-[10.5px] font-bold text-white ring-1 ring-inset ring-white/20 backdrop-blur">
+                      <span className="h-1.5 w-1.5 animate-soft-pulse rounded-full bg-emerald-400" />
+                      Techs on the road now
+                    </span>
+                  </div>
 
-            <p className="mt-5 flex flex-wrap items-center justify-center gap-x-3 gap-y-1.5 text-[11px] font-semibold text-ocean-200 sm:text-xs">
-              <span className="inline-flex items-center gap-1.5">
-                <StarIcon className="h-3.5 w-3.5 text-amber-300" />
-                {rating.value} stars · {rating.count} reviews
-              </span>
-              <span aria-hidden="true" className="text-ocean-500">
-                •
-              </span>
-              <span>Licensed, Bonded &amp; Insured</span>
-              <span aria-hidden="true" className="text-ocean-500">
-                •
-              </span>
-              <span>Nights, weekends &amp; holidays</span>
-            </p>
+                  <div
+                    aria-hidden="true"
+                    className="absolute inset-x-0 bottom-0 flex items-center justify-between gap-2 bg-gradient-to-t from-ocean-950 via-ocean-950/70 to-transparent px-3 pb-2.5 pt-8"
+                  >
+                    <span className="text-[10.5px] font-bold text-ocean-100">
+                      Jackson + Harrison County
+                    </span>
+                    <span className="inline-flex items-center gap-1 rounded-full bg-white/10 px-2 py-0.5 text-[10.5px] font-bold text-white ring-1 ring-inset ring-white/20">
+                      <BoltIcon className="h-3 w-3 text-amber-300" />
+                      ETA 45–60 min
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Wave divider flowing into the next section */}
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-x-0 bottom-0"
+          >
+            <svg
+              viewBox="0 0 1440 60"
+              preserveAspectRatio="none"
+              className="h-[44px] w-full"
+            >
+              <path
+                d="M0 30C160 52 320 52 480 34C640 16 800 16 960 34C1120 52 1280 52 1440 30V60H0Z"
+                fill="#f0f9ff"
+              />
+            </svg>
           </div>
         </section>
 
         {/* --------------------------------------------------- ANCHOR STRIP */}
         <nav
           aria-label="Page sections"
-          className="border-b border-slate-200 bg-ocean-50/80"
+          className="border-b border-slate-200 bg-ocean-50"
         >
           <div className="no-scrollbar mx-auto flex max-w-5xl items-center gap-2 overflow-x-auto px-4 py-2.5 text-[13px] font-semibold text-ocean-800">
             <span className="hidden shrink-0 text-[11px] font-bold uppercase tracking-wider text-slate-500 sm:inline">
@@ -367,7 +429,7 @@ export default function Home() {
             <SectionHeading
               eyebrow="Service area"
               title={serviceArea.headline}
-              sub="Local techs, stocked trucks, and no out-of-area trip charges across Jackson and Harrison County."
+              sub={serviceArea.sub}
             />
 
             <ul className="mt-6 grid grid-cols-2 gap-2 sm:grid-cols-3">
@@ -394,7 +456,8 @@ export default function Home() {
                   <span className="font-bold text-slate-900">
                     Not sure if we cover you?
                   </span>{" "}
-                  Call and we&apos;ll answer in about 30 seconds — including{" "}
+                  Call and we&apos;ll answer in about 30 seconds — Gulfport to
+                  Pascagoula, including{" "}
                   {serviceArea.counties.join(" and ")}.
                 </p>
               </div>
@@ -483,7 +546,7 @@ export default function Home() {
                   business.responseLine,
                   `${business.afterHoursLine} — same phone number`,
                   business.licenseLine,
-                  `${business.yearsInBusiness} serving Ocean Springs, Biloxi, Gautier & Jackson County`,
+                  `${business.yearsInBusiness} serving the Mississippi Gulf Coast`,
                 ].map((line) => (
                   <li key={line} className="flex items-start gap-2.5">
                     <CheckCircleIcon className="mt-0.5 h-5 w-5 shrink-0 text-ocean-600" />
@@ -573,7 +636,7 @@ export default function Home() {
               </span>
             </div>
             <p className="mt-2.5 text-[12.5px] leading-relaxed text-slate-600">
-              Same-day emergency HVAC repair on the Mississippi Gulf Coast.{" "}
+              Same-day emergency HVAC repair across the Mississippi Gulf Coast.{" "}
               {business.yearsInBusiness} in business.
             </p>
           </div>
@@ -627,8 +690,9 @@ export default function Home() {
           © {new Date().getFullYear()} {business.name}. All rights reserved.
           <span className="mt-1 block">
             Emergency AC repair, refrigerant leak repair, compressor repair,
-            drain line clearing and seasonal tune-ups in Ocean Springs, Biloxi,
-            Gautier, Jackson County and Harrison County, MS.
+            drain line cleaning and seasonal tune-ups across the Mississippi
+            Gulf Coast — Ocean Springs, Biloxi, Gautier, Pascagoula, Gulfport,
+            Jackson County and Harrison County, MS.
           </span>
         </div>
       </footer>
