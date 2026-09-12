@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Coast Heating and Air Conditioning">
+  <rect width="64" height="64" rx="14" fill="#075985"/>
+  <path d="M32 11c4.8 6.2 9 11 9 16.2a9 9 0 0 1-18 0C23 22 27.2 17.2 32 11Z" fill="#ffffff"/>
+  <path d="M34 21.5 28.4 30.2h3.7l-.9 6.8 6.2-9.5h-3.9l.5-6Z" fill="#075985"/>
+</svg>
