@@ -63,7 +63,11 @@ const anchorLinks = [
 
 function SectionHeading({ eyebrow, title, sub, align = "center" }) {
   return (
-    <div className={align === "center" ? "mx-auto max-w-2xl text-center" : "max-w-2xl"}>
+    <div
+      className={
+        align === "center" ? "mx-auto max-w-2xl text-center" : "max-w-2xl"
+      }
+    >
       <p className="text-[11px] font-bold uppercase tracking-[0.16em] text-ocean-700">
         {eyebrow}
       </p>
@@ -71,7 +75,9 @@ function SectionHeading({ eyebrow, title, sub, align = "center" }) {
         {title}
       </h2>
       {sub ? (
-        <p className="mt-2 text-[14.5px] leading-relaxed text-slate-600">{sub}</p>
+        <p className="mt-2 text-[14.5px] leading-relaxed text-slate-600">
+          {sub}
+        </p>
       ) : null}
     </div>
   );
@@ -217,7 +223,10 @@ export default function Home() {
         </nav>
 
         {/* -------------------------------------------------------- TRUST BAR */}
-        <section aria-label="Why Gulf Coast homeowners call us" className="bg-white">
+        <section
+          aria-label="Why Gulf Coast homeowners call us"
+          className="bg-white"
+        >
           <div className="mx-auto grid max-w-5xl grid-cols-2 gap-x-4 gap-y-5 px-4 py-6 sm:grid-cols-4">
             {trustBar.map((item) => {
               const Icon = trustIcons[item.icon] ?? ShieldCheckIcon;
@@ -226,7 +235,9 @@ export default function Home() {
                   <Icon
                     className={
                       "mt-0.5 h-5 w-5 shrink-0 " +
-                      (item.icon === "star" ? "text-amber-400" : "text-ocean-600")
+                      (item.icon === "star"
+                        ? "text-amber-400"
+                        : "text-ocean-600")
                     }
                   />
                   <div>
@@ -287,7 +298,10 @@ export default function Home() {
 
             <p className="mt-5 text-center text-[13px] text-slate-500">
               Not sure what&apos;s wrong? Call{" "}
-              <a href={TEL_HREF} className="font-bold text-ocean-700 underline underline-offset-2">
+              <a
+                href={TEL_HREF}
+                className="font-bold text-ocean-700 underline underline-offset-2"
+              >
                 {PHONE_DISPLAY}
               </a>{" "}
               and describe it — we&apos;ll tell you what it usually means.
@@ -439,7 +453,7 @@ export default function Home() {
             <a
               href={TEL_HREF}
               data-cta="banner-call"
-              className="mt-4 inline-flex h-13 items-center justify-center gap-2 rounded-xl bg-white px-6 py-3.5 text-[15px] font-extrabold text-ocean-900 active:bg-ocean-50"
+              className="mt-4 inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-white px-6 text-[15px] font-extrabold text-ocean-900 active:bg-ocean-50"
             >
               <PhoneIcon className="h-4 w-4" />
               Call Now: {PHONE_DISPLAY}
@@ -450,7 +464,7 @@ export default function Home() {
           </div>
         </section>
 
-        {/* -------------------------------------------------------- REQUEST */}
+        {/* ---------------------------------------------------------- REQUEST */}
         <section
           id="request"
           className="anchor-offset border-b border-slate-200 bg-white py-10 sm:py-14"
@@ -466,9 +480,9 @@ export default function Home() {
 
               <ul className="mt-5 grid gap-2.5">
                 {[
-                  `${business.responseLine}`,
-                  business.afterHoursLine + " — same phone number",
-                  `${business.licenseLine}`,
+                  business.responseLine,
+                  `${business.afterHoursLine} — same phone number`,
+                  business.licenseLine,
                   `${business.yearsInBusiness} serving Ocean Springs, Biloxi, Gautier & Jackson County`,
                 ].map((line) => (
                   <li key={line} className="flex items-start gap-2.5">
@@ -538,7 +552,7 @@ export default function Home() {
               <a
                 href={TEL_HREF}
                 data-cta="faq-call"
-                className="flex h-13 w-full items-center justify-center gap-2 rounded-xl bg-white px-5 py-3.5 text-[15px] font-extrabold text-ocean-900 active:bg-ocean-50 sm:w-auto"
+                className="flex h-12 w-full items-center justify-center gap-2 rounded-xl bg-white px-5 text-[15px] font-extrabold text-ocean-900 active:bg-ocean-50 sm:w-auto"
               >
                 <PhoneIcon className="h-4 w-4" />
                 Call Now: {PHONE_DISPLAY}
@@ -553,7 +567,7 @@ export default function Home() {
         <div className="mx-auto grid max-w-5xl gap-6 px-4 sm:grid-cols-2 lg:grid-cols-4">
           <div>
             <div className="flex items-center gap-2">
-              <LogoMark className="h-9 w-9 shrink-0 bg-ocean-700 [&>rect]:fill-ocean-700" />
+              <LogoMark tone="onLight" className="h-9 w-9 shrink-0" />
               <span className="text-[13px] font-extrabold uppercase leading-tight tracking-wide text-slate-900">
                 Coast Heating &amp; Air Conditioning
               </span>
