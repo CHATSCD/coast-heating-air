@@ -14,7 +14,8 @@ don't want to call yet.
 | Element | Where | Why |
 | --- | --- | --- |
 | Sticky "Call Now" bar | Fixed to the bottom of the viewport, all screen sizes, rendered from `app/layout.js` | A call target is always visible no matter where they scroll |
-| Above-the-fold CTA | Hero | Business name, value prop, hours badge, phone number, one primary CTA — no scrolling on a 360×640 phone |
+| Above-the-fold CTA | Hero | Business name, Gulf Coast headline, coverage line, hours badge, phone number, one primary CTA — no scrolling on a 360×640 phone |
+| Coverage map graphic | Hero (right column on desktop, below the CTA on mobile) | An inline-SVG Mississippi Gulf Coast map with Gulfport → Pascagoula pinned, a dashed service corridor, a live "techs on the road" pill and an ETA chip. Reads "we cover your whole coast" instantly |
 | Trust bar | Directly under the hero | Star rating + review count, licensing, 25+ years, same-day service |
 | Services | `#services` | 5 services, plain-language icons, each with its own click-to-call link |
 | Pricing | `#pricing` | Kills the "what's this going to cost me" objection before the FAQ |
@@ -28,6 +29,17 @@ don't want to call yet.
 Every phone number on the page is a `tel:` link. The nav has no multi-page maze —
 one scrolling page with an anchor strip.
 
+### Graphics — all hand-built SVG, zero image files
+
+* `components/GulfCoastMap.js` — the stylized coast map in the hero (~2KB of
+  inline SVG). City pin positions run west to east: Gulfport, Biloxi, Ocean
+  Springs, Gautier, Pascagoula. Edit the `CITIES` array to add or move pins.
+* Wave divider at the bottom of the hero, cut to match the next section's
+  `ocean-50` background.
+* All icons in `components/icons.js`; brand mark in the header and footer.
+
+No raster images, no carousels, no autoplay video, no web fonts.
+
 ---
 
 ## Run it locally
@@ -40,10 +52,13 @@ npm run dev                  # http://localhost:3000
 
 ## Editing content (start here)
 
-**`lib/business.js` is the single source of truth.** Phone number, hours, review
-count, services, cities/ZIPs, testimonials and FAQ answers all live there, and
-the page, the `<head>` metadata and the JSON-LD structured data all read from it,
-so they can't drift apart.
+**`lib/business.js` is the single source of truth.** Phone number, hours, hero
+headline, coverage cities, services, cities/ZIPs, testimonials and FAQ answers
+all live there, and the page, the `<head>` metadata and the JSON-LD structured
+data all read from it, so they can't drift apart.
+
+The `hero` export at the top controls the headline and the "Ocean Springs ·
+Biloxi · …" coverage line.
 
 ---
 
@@ -81,8 +96,11 @@ visitors can create a lead but cannot read anyone else's.
 
 ## SEO
 
-* **Meta title:** `Emergency AC Repair Ocean Springs, MS | Coast Heating & Air Conditioning`
+* **Meta title:** `Emergency AC Repair Ocean Springs & the MS Gulf Coast | Coast Heating & Air`
 * **Description:** leads with the emergency use case, service area, rating and phone number
+* **Headline:** the region ("Mississippi Gulf Coast") carries the H1; Ocean
+  Springs leads the city list underneath it, so the page ranks for coast-wide
+  searches and city searches at the same time.
 * **Structured data** (`lib/schema.js`): `HVACBusiness` + `LocalBusiness` — name, phone, service
   area (9 cities + 2 counties), Mon–Sat 7–7 opening hours, a 24/7 emergency
   `ContactPoint`, `aggregateRating` (4.8 / 790), the 3 reviews, an
