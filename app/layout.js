@@ -8,8 +8,8 @@ const url = siteUrl();
 const schema = buildSchema();
 
 const metaTitle =
-  "Emergency AC Repair Ocean Springs, MS | Coast Heating & Air Conditioning";
-const metaDescription = `AC out? Same-day emergency AC repair in Ocean Springs, Biloxi, Gautier and across Jackson & Harrison County, MS. Licensed, bonded & insured. ${rating.value} stars from ${rating.count} reviews. Call ${PHONE_DISPLAY} — average response 45–60 minutes.`;
+  "Emergency AC Repair Ocean Springs & the MS Gulf Coast | Coast Heating & Air";
+const metaDescription = `AC out? Same-day emergency AC repair across the Mississippi Gulf Coast — Ocean Springs, Biloxi, Gautier, Pascagoula and Gulfport. Licensed, bonded & insured. ${rating.value} stars from ${rating.count} reviews. Call ${PHONE_DISPLAY} — avg response 45–60 minutes.`;
 
 export const metadata = {
   metadataBase: new URL(url),
@@ -59,7 +59,7 @@ export const viewport = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body className="min-h-screen bg-white pb-0">
+      <body className="min-h-screen bg-white">
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
